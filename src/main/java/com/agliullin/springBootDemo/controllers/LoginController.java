@@ -1,22 +1,28 @@
 package com.agliullin.springBootDemo.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @Controller
+@SessionAttributes("name")
 public class LoginController {
 
     @RequestMapping("/")
-    public String home(Map<String, Object> model) {
-        model.put("message", "HowToDoInJava Reader !!");
+    public String index(Map<String, Object> model) {
         return "index";
     }
 
-    @RequestMapping("/login")
-    public String next(Map<String, Object> model) {
-        model.put("message", "You are in new page !!");
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginGet(Map<String, Object> model) {
         return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginPost(Map<String, Object> model,
+                            @RequestParam String name, @RequestParam String password) {
+        model.put("name", name);
+        return "welcome";
     }
 }

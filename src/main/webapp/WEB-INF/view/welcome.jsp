@@ -9,16 +9,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>index</title>
+    <title>welcome</title>
 </head>
 <body>
-<div>
-    <div>
-        <h1>Spring Boot JSP Example</h1>
-        <h2>Hello </h2>
+Welcome ${name}!! <a href="/">back</a>
 
-        Click on this <strong><a href="/login">link</a></strong> to visit another page.
-    </div>
-</div>
 </body>
 </html>
