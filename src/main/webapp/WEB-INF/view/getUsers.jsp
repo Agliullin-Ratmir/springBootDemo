@@ -9,18 +9,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>index</title>
+    <title>welcome</title>
 </head>
 <body>
-<div>
-    <div>
-        <h1>Spring Boot JSP Example</h1>
-        <h2>Choose your option: </h2>
+Here are users!! <a href="/">back</a>
 
-        <strong><a href="/addNewUser">Add new user</a></strong><br>
-        <strong><a href="/login">Login</a></strong><br>
-        <strong><a href="/getUsers">Get users</a></strong><br>
-    </div>
-</div>
 </body>
 </html>

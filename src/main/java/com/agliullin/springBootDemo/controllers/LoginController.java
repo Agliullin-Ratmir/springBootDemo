@@ -25,4 +25,14 @@ public class LoginController {
         model.put("name", name);
         return "welcome";
     }
+
+    @RequestMapping(value = "/getUsers")
+    public String getUsers(Map<String, Object> model) {
+        return "getUsers";
+    }
+
+    @RequestMapping(value = "/addNewUser")
+    public String addNewUser(Map<String, Object> model) {
+        return "addNewUser";
+    }
 }

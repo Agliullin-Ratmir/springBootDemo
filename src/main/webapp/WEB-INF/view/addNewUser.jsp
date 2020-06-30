@@ -9,18 +9,15 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>index</title>
+    <title>login</title>
 </head>
 <body>
-<div>
-    <div>
-        <h1>Spring Boot JSP Example</h1>
-        <h2>Choose your option: </h2>
 
-        <strong><a href="/addNewUser">Add new user</a></strong><br>
-        <strong><a href="/login">Login</a></strong><br>
-        <strong><a href="/getUsers">Get users</a></strong><br>
-    </div>
-</div>
+<form method="post">
+    Name : <input type="text" name="name" /><br>
+    Password : <input type="password" name="password" /><br>
+    ROLE(ADMIN or USER) : <input type="text" name="role" /><br>
+    <input type="submit" />
+</form>
 </body>
 </html>
