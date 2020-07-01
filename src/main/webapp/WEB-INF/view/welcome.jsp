@@ -12,7 +12,7 @@
     <title>welcome</title>
 </head>
 <body>
-Welcome ${name}!! <a href="/">back</a>
+Welcome ${name} as an ${role}!! <a href="/">back</a>
 
 </body>
 </html>
