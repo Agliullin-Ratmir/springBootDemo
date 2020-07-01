@@ -12,7 +12,7 @@
     <title>welcome</title>
 </head>
 <body>
-Here are users!! <a href="/logout">logout</a>
+You were logged out <a href="/">back</a>
 
 </body>
 </html>

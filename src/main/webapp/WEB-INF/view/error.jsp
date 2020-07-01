@@ -9,10 +9,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>welcome</title>
+    <title>login-error</title>
 </head>
 <body>
-Here are users!! <a href="/logout">logout</a>
-
+${errorMessage}
 </body>
 </html>

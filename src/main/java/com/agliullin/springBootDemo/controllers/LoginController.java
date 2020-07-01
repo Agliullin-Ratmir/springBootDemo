@@ -4,10 +4,17 @@ import com.agliullin.springBootDemo.entities.Person;
 import com.agliullin.springBootDemo.entities.Role;
 import com.agliullin.springBootDemo.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.AuthenticationException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
+
+import static com.agliullin.springBootDemo.utils.EncrytedPasswordUtils.encryptePassword;
 
 @Controller
 @SessionAttributes("name")
@@ -38,6 +45,11 @@ public class LoginController {
         return "getUsers";
     }
 
+    @RequestMapping(value = "/logout")
+    public String logout(Map<String, Object> model) {
+        return "index";
+    }
+
     @RequestMapping(value = "/addNewUser", method = RequestMethod.GET)
     public String addNewUserGET(Map<String, Object> model) {
         return "addNewUser";
@@ -47,12 +59,27 @@ public class LoginController {
     public String addNewUserPOST(Map<String, Object> model,
                                  @RequestParam String name, @RequestParam String password,
                                  @RequestParam String role) {
-
-        service.addNewPerson(getNewPerson(name, password, role));
+        String encryptedPassword = encryptePassword(password);
+        service.addNewPerson(getNewPerson(name, encryptedPassword, role));
         model.put("name", name);
-        model.put("password", password);
+        model.put("password", encryptedPassword);
         model.put("role", role);
         return "welcome";
+    }
+
+    @GetMapping("/error")
+    public String loginError(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+        String errorMessage = null;
+        if (session != null) {
+            AuthenticationException ex = (AuthenticationException) session
+                    .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+            if (ex != null) {
+                errorMessage = ex.getMessage();
+            }
+        }
+        model.addAttribute("errorMessage", errorMessage);
+        return "error";
     }
 
     private Person getNewPerson(String name, String password, String role) {

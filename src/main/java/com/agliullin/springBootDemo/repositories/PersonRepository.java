@@ -17,4 +17,11 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
      * @return
      */
     List<Person> findPersonByRole(Role role);
+
+    /**
+     * Find User by login
+     * @param login
+     * @return
+     */
+    Person findPersonByLogin(String login);
 }
